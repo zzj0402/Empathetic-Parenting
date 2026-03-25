@@ -92,6 +92,9 @@
 \setlist[itemize]{leftmargin=1.5em, itemsep=2pt}
 \setlist[enumerate]{leftmargin=1.5em, itemsep=2pt}
 
+% Citations
+\usepackage[authoryear,round]{natbib}
+
 % Hyperlinks (load last)
 \usepackage[
   colorlinks=true,
@@ -102,7 +105,7 @@
 
 % Metadata
 \hypersetup{
-  pdftitle={The Empathetic Parent: Raising Children with Empathy, Connection, and Love},
+  pdftitle={Empathetic Parenting: Raising Children with Empathy, Connection, and Love},
   pdfauthor={Zijing Zhang},
   pdfsubject={Parenting},
   pdfkeywords={empathy, parenting, children, emotional intelligence, connection}
@@ -118,10 +121,11 @@
   \centering
   \vspace*{2cm}
   {\color{chaptercolor}\rule{\linewidth}{1.5pt}}\\[0.4cm]
-  {\huge\bfseries The Empathetic Parent}\\[0.3cm]
+  {\huge\bfseries Empathetic Parenting}\\[0.3cm]
   {\Large\itshape Raising Children with Empathy,\\[0.1cm]
    Connection, and Love}\\[0.4cm]
   {\color{chaptercolor}\rule{\linewidth}{1.5pt}}\\[2cm]
+  {\Large \textbf{Zijing Zhang}}\\[2cm]
   \vfill
   {\large A practical guide for every loving parent}\\[1cm]
   {\small\itshape \today}
@@ -150,5 +154,8 @@
 
 \include{chapters/conclusion}
 \include{chapters/appendix}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
 
 \end{document}
