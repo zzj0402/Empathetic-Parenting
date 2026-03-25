@@ -3,7 +3,7 @@
 ## 1. Project Overview & Tone
 - **Title**: *Empathetic Parenting: Raising Children with Empathy, Connection, and Love*
 - **Author**: Zijing Zhang
-- **Tone**: Compassionate, practical, and heavily grounded in scientific research (Attachment Theory, Neuroscience, Epigenetics, Polyvagal Theory). Keep the language accessible to everyday parents but maintain an authoritative, well-researched voice. Do not be overly casual or overly academic.
+- **Tone**: Empathetic, practical, and heavily grounded in scientific research (Attachment Theory, Neuroscience, Epigenetics, Polyvagal Theory). Keep the language accessible to everyday parents but maintain an authoritative, well-researched voice. Do not be overly casual or overly academic.
 
 ## 2. LaTeX Formatting & Structure
 - **File Organization**: The root document is `book.tex`. Individual chapters are stored in the `chapters/` directory.
