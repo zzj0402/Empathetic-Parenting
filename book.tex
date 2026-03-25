@@ -92,6 +92,9 @@
 \setlist[itemize]{leftmargin=1.5em, itemsep=2pt}
 \setlist[enumerate]{leftmargin=1.5em, itemsep=2pt}
 
+% Citations
+\usepackage[authoryear,round]{natbib}
+
 % Hyperlinks (load last)
 \usepackage[
   colorlinks=true,
@@ -151,5 +154,8 @@
 
 \include{chapters/conclusion}
 \include{chapters/appendix}
+
+\bibliographystyle{plainnat}
+\bibliography{references}
 
 \end{document}
