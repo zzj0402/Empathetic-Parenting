@@ -32,18 +32,37 @@ The `book.tex` defines custom graphical boxes. You should use these strategicall
   [Summary text describing the core concept.]
   \end{keyinsight}
   ```
-- **Practice Exercises**: Provide actionable, real-world exercises for parents to try.
+- **Practice Exercises**: Provide actionable, real-world exercises for parents to try. Since the `practiceexercise` macro does not have a built-in title, you MUST logically separate it with a preceding `\section{Practice Exercise}`. Furthermore, exercises MUST be formatted as multiple-choice questions grouped strictly into sets of 3 per page, followed by their 3 concise corresponding paragraph explanations on the subsequent page (using `\vspace{\fill}` to balance the layout).
   ```latex
+  \section{Practice Exercise}
   \begin{practiceexercise}
-  [Exercise instructions and context.]
+  \textbf{Multiple Choice Questions}
+  \begin{enumerate}
+    \item [Question 1...]
+    \vspace{\fill}
+    \item [Question 2...]
+    \vspace{\fill}
+    \item [Question 3...]
+  \end{enumerate}
+  \vspace{\fill}
+  \newpage
+  
+  \textbf{Explanations for Questions 1--3}
+  [Concise paragraph explanations for 1, 2, and 3]
+  \vspace{\fill}
+  \newpage
   \end{practiceexercise}
   ```
-- **Reflection Questions**: Placed at the very end of a chapter. Must contain an enumerated list of thought-provoking questions about the reader's own childhood and parenting approach.
+- **Reflection Questions**: Placed at the very end of a chapter. Must contain an enumerated list of exactly 9 thought-provoking questions about the reader's own childhood, their emotional triggers, and their unique parenting approach. **CRITICAL**: The 9 questions MUST be concise enough to fit entirely onto a single PDF page. You must use the `\small` font command and pass `[itemsep=0pt, parsep=0pt, topsep=0pt]` to the `enumerate` environment to compress vertical spacing.
   ```latex
+  \section{Reflection Questions}
   \begin{reflection}
-  \begin{enumerate}
+  \small
+  \begin{enumerate}[itemsep=0pt, parsep=0pt, topsep=0pt]
     \item [Question 1]
     \item [Question 2]
+    ...
+    \item [Question 9]
   \end{enumerate}
   \end{reflection}
   ```
