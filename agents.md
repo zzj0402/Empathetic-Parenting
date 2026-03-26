@@ -3,7 +3,7 @@
 ## 1. Project Overview & Tone
 - **Title**: *Empathetic Parenting: Raising Children with Empathy, Connection, and Love*
 - **Author**: Zijing Zhang
-- **Tone**: Empathetic, practical, and heavily grounded in scientific research (Attachment Theory, Neuroscience, Epigenetics, Polyvagal Theory). Keep the language accessible to everyday parents but maintain an authoritative, well-researched voice. Do not be overly casual or overly academic.
+- **Tone**: Empathetic, practical, and heavily grounded in scientific research. Keep the language accessible to everyday parents but maintain well-researched voice. Ensure all explanations, examples, and advice adhere to the principles of Nonviolent Communication (NVC), focusing on observations, feelings, needs, and requests without judgment, blame, or evaluation.
 
 ## 2. LaTeX Formatting & Structure
 - **File Organization**: The root document is `book.tex`. Individual chapters are stored in the `chapters/` directory.
@@ -52,3 +52,14 @@ The `book.tex` defines custom graphical boxes. You should use these strategicall
 - **Line Breaks**: Try to place line breaks at natural sentence boundaries or punctuation marks in the `.tex` files. This makes Git tracking and diffs much cleaner.
 - **Lists**: Rely on `\begin{itemize}` and `\begin{enumerate}` for lists. The preamble already customizes their spacing.
 - **Special Characters**: Don't forget to escape special LaTeX characters (e.g., `\&`, `\%`). Em-dashes should be typed as `---`.
+
+## 6. Book Structure
+For each section, the structure should be as follows:
+
+- Section body: in-depth discussion of the topic, supported by scientific research and real-world examples.
+- Key Insight: the TLDR; a concise summary of the section's core scientific findings or main takeaways.
+
+For each chapter, the structure should be as follows:
+
+- Practice Exercises: actionable, real-world exercises for parents to try.
+- Reflection Questions: thought-provoking questions about the reader's own childhood and parenting approach.
