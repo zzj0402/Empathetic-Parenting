@@ -83,7 +83,8 @@ To maintain consistency across the book, every chapter MUST adhere strictly to t
 
 2. **Main Content Sections (`\section`):**
    - Each major topic must be encapsulated in a `\section{...}`.
-   - **Section body:** Provide an in-depth discussion of the topic, heavily supported by scientific research (`\citep{}` and `\citet{}`) and real-world NVC examples.
+   - **Section body:** Provide an in-depth discussion of the topic, heavily supported by scientific research (`\citep{}` and `\citet{}`).
+   - Each section must have at least 9 scholar sources.
    - **Key Insight:** EVERY `\section` must conclude with a `\begin{keyinsight}` block that serves as a TLDR; a concise summary of the section's core scientific findings or main takeaways.
 
 3. **End-of-Chapter Practice Exercises:**
@@ -99,6 +100,7 @@ To maintain consistency across the book, every chapter MUST adhere strictly to t
      - Insert `\newpage`.
      - Repeat this exact pattern for questions 4--6 and 7--9 (using `\setcounter{enumi}{3}` and `\setcounter{enumi}{6}` respectively to maintain numbering).
    - Close the `\end{practiceexercise}` environment and add `\newpage`.
+   - Make sure each set of 3 questions fit on a single page in the PDF output.
 
 4. **End-of-Chapter Reflection Questions:**
    - Add exactly one `\section{Reflection Questions}` at the very end of the chapter.
