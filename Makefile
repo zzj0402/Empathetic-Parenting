@@ -18,6 +18,7 @@ all: $(MAIN).pdf
 
 $(MAIN).pdf: $(MAIN).tex $(CHAPTERS)
 	$(LATEX) $(LATEXFLAGS) $(MAIN)
+	$(BIBTEX) $(MAIN)
 	$(LATEX) $(LATEXFLAGS) $(MAIN)
 	$(LATEX) $(LATEXFLAGS) $(MAIN)
 
