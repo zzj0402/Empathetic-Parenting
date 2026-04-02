@@ -73,12 +73,37 @@ The `book.tex` defines custom graphical boxes. You should use these strategicall
 - **Special Characters**: Don't forget to escape special LaTeX characters (e.g., `\&`, `\%`). Em-dashes should be typed as `---`.
 
 ## 6. Book Structure
-For each section, the structure should be as follows:
 
-- Section body: in-depth discussion of the topic, supported by scientific research and real-world examples.
-- Key Insight: the TLDR; a concise summary of the section's core scientific findings or main takeaways.
+To maintain consistency across the book, every chapter MUST adhere strictly to the following structural outline, modeled after Chapters 1 and 2:
 
-For each chapter, the structure should be as follows:
+1. **Chapter Title and Quote:**
+   - Begin with `\chapter{[Chapter Title]}`.
+   - Follow immediately with a relevant quote using the specified `\begin{quote}` block format (see Section 2).
+   - Add `\newpage` if desired for pacing.
 
-- Practice Exercises: actionable, real-world exercises for parents to try.
-- Reflection Questions: thought-provoking questions about the reader's own childhood and parenting approach.
+2. **Main Content Sections (`\section`):**
+   - Each major topic must be encapsulated in a `\section{...}`.
+   - **Section body:** Provide an in-depth discussion of the topic, heavily supported by scientific research (`\citep{}` and `\citet{}`) and real-world NVC examples.
+   - **Key Insight:** EVERY `\section` must conclude with a `\begin{keyinsight}` block that serves as a TLDR; a concise summary of the section's core scientific findings or main takeaways.
+
+3. **End-of-Chapter Practice Exercises:**
+   - Add exactly one `\section{Practice Exercise}` near the end of the chapter.
+   - Open the `\begin{practiceexercise}` environment.
+   - Provide **exactly 9 Multiple Choice Questions** grouped into sets of 3.
+   - **Formatting strictness:**
+     - Write `\textbf{Multiple Choice Questions}`.
+     - Begin `\begin{enumerate}`.
+     - List questions 1, 2, and 3, separated by `\vspace{\fill}`.
+     - End the list, add `\vspace{\fill}`, and insert `\newpage`.
+     - Write `\textbf{Explanations for Questions 1--3}` followed by the 3 concise paragraph explanations separated by `\vspace{\fill}`.
+     - Insert `\newpage`.
+     - Repeat this exact pattern for questions 4--6 and 7--9 (using `\setcounter{enumi}{3}` and `\setcounter{enumi}{6}` respectively to maintain numbering).
+   - Close the `\end{practiceexercise}` environment and add `\newpage`.
+
+4. **End-of-Chapter Reflection Questions:**
+   - Add exactly one `\section{Reflection Questions}` at the very end of the chapter.
+   - Open the `\begin{reflection}` environment.
+   - Use the `\small` font command.
+   - Use `\begin{enumerate}[itemsep=0pt, parsep=0pt, topsep=0pt]` to ensure all questions fit on a single PDF page.
+   - Provide an enumerated list of **exactly 9 thought-provoking questions** about the reader's own childhood, their emotional triggers, and their unique parenting approach.
+   - Close the `\end{reflection}` environment.
