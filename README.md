@@ -2,27 +2,6 @@
 
 A LaTeX book titled **"The Empathetic Parent: Raising Children with Compassion, Connection, and Confidence"**.
 
-## Book Structure
-
-```
-book.tex            ← main LaTeX file (entry point)
-chapters/
-  preface.tex       ← Preface
-  chapter01.tex     ← Ch 1: What Is Empathetic Parenting?
-  chapter02.tex     ← Ch 2: Understanding Your Child's Emotional World
-  chapter03.tex     ← Ch 3: The Art of Active Listening
-  chapter04.tex     ← Ch 4: Emotion Coaching
-  chapter05.tex     ← Ch 5: Setting Empathetic Limits
-  chapter06.tex     ← Ch 6: Nonviolent Communication with Children
-  chapter07.tex     ← Ch 7: Empathetic Parenting Through Developmental Stages
-  chapter08.tex     ← Ch 8: The Regulated Parent
-  chapter09.tex     ← Ch 9: Building Connection: Rituals, Play, and Presence
-  chapter10.tex     ← Ch 10: Raising Emotionally Intelligent Children
-  conclusion.tex    ← Conclusion
-  appendix.tex      ← Appendix: Recommended Resources
-Makefile            ← build automation
-```
-
 ## Building the PDF
 
 ### Prerequisites
