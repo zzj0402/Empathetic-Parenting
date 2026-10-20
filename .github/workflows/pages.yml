@@ -1,0 +1,152 @@
+name: Build and Publish Book PDF
+
+on:
+  push:
+    branches: ["main"]
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "publish-pdf"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install TeX Live dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-bibtex-extra
+
+      - name: Build PDF
+        run: make
+
+      - name: Prepare GitHub Pages site
+        run: |
+          mkdir -p _site
+          cp book.pdf _site/book.pdf
+          cat << 'EOF' > _site/index.html
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Empathetic Parenting — Raising Children with Empathy, Connection, and Love</title>
+            <style>
+              body {
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
+                background: #f7f9f8;
+                color: #1f2937;
+              }
+              header {
+                background: #468264;
+                color: #ffffff;
+                padding: 0.85rem 1.5rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 1rem;
+              }
+              header h1 {
+                font-size: 1.15rem;
+                margin: 0;
+              }
+              header .actions a {
+                color: #ffffff;
+                background: #c8643c;
+                text-decoration: none;
+                padding: 0.45rem 0.9rem;
+                border-radius: 6px;
+                font-weight: 600;
+                font-size: 0.9rem;
+              }
+              iframe {
+                flex: 1;
+                width: 100%;
+                border: none;
+              }
+            </style>
+          </head>
+          <body>
+            <header>
+              <h1>Empathetic Parenting: Raising Children with Empathy, Connection, and Love</h1>
+              <div class="actions">
+                <a href="book.pdf" download>Download PDF</a>
+              </div>
+            </header>
+            <iframe src="book.pdf" title="Empathetic Parenting PDF">
+              <p>Your browser does not support embedded PDFs. <a href="book.pdf">Download the PDF</a>.</p>
+            </iframe>
+          </body>
+          </html>
+          EOF
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: book-pdf
+          path: book.pdf
+
+      - name: Upload Pages artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+  deploy-pages:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  publish-release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download PDF artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: book-pdf
+
+      - name: Publish to GitHub Releases
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [[ "${{ github.ref_type }}" == "tag" ]]; then
+            TAG="${{ github.ref_name }}"
+            TITLE="Empathetic Parenting (${TAG})"
+          else
+            TAG="latest"
+            TITLE="Empathetic Parenting (Latest Build)"
+          fi
+          if gh release view "$TAG" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+            gh release upload "$TAG" book.pdf --repo "${{ github.repository }}" --clobber
+          else
+            gh release create "$TAG" book.pdf \
+              --repo "${{ github.repository }}" \
+              --target "${{ github.sha }}" \
+              --title "$TITLE" \
+              --notes "Automated PDF build of *Empathetic Parenting: Raising Children with Empathy, Connection, and Love*."
+          fi

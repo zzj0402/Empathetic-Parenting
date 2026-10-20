@@ -1,4 +1,4 @@
-# Makefile for "The Empathetic Parent" LaTeX book
+# Makefile for "Empathetic Parenting" LaTeX book
 #
 # Usage:
 #   make          - build the PDF (default)
@@ -16,9 +16,10 @@ CHAPTERS = $(wildcard chapters/*.tex)
 
 all: $(MAIN).pdf
 
-$(MAIN).pdf: $(MAIN).tex $(CHAPTERS)
+$(MAIN).pdf: $(MAIN).tex $(CHAPTERS) references.bib
 	$(LATEX) $(LATEXFLAGS) $(MAIN)
 	$(BIBTEX) $(MAIN)
+	$(LATEX) $(LATEXFLAGS) $(MAIN)
 	$(LATEX) $(LATEXFLAGS) $(MAIN)
 	$(LATEX) $(LATEXFLAGS) $(MAIN)
 

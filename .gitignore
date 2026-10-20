@@ -10,6 +10,3 @@
 *.fls
 *.fdb_latexmk
 *.synctex.gz
-
-# Generated output (build the PDF locally with `make`)
-book.pdf
